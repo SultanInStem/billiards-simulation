@@ -19,7 +19,7 @@ class Canvas:
         self.clock.tick(60)
     def handle_events(self): 
         for event in pygame.event.get():
-            if event == pygame.QUIT: 
+            if event.type == pygame.QUIT: 
                 self.running = False 
 
     def run(self): 
