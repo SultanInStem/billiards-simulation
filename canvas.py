@@ -3,6 +3,7 @@ import sys
 import numpy as np
 from ball import Ball
 from table import Table
+from globals import to_screen_coords
 class Canvas: 
     def __init__(self,size):
         pygame.init()
@@ -11,7 +12,7 @@ class Canvas:
         self.screen = pygame.display.set_mode(size) 
         self.clock = pygame.time.Clock()
         self.ball = Ball((0,0), 10, np.array([-3,1]))
-        self.table = Table()
+        self.table = Table(250, (255,0,0))
 
     def update(self): 
         self.ball.move()
@@ -21,6 +22,7 @@ class Canvas:
 
         self.ball.draw(self.screen)
         self.table.draw(self.screen)
+        pygame.draw.circle(self.screen, (0,255,0), to_screen_coords((0,0), self.screen.get_size()), 5, 0)
 
         pygame.display.flip()
         self.clock.tick(60)

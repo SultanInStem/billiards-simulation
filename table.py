@@ -1,38 +1,19 @@
 import pygame 
 import math
 from globals import to_math_coords, to_screen_coords
+from arc import Arc 
+from line import Line
 class Table: 
-    def __init__(self): 
+    def __init__(self, radius, color): 
         self.type = type
-    def draw(self, screen): 
-        color = (255, 0, 0)
-        pygame.draw.line(
-            screen, 
-            color, 
-            to_screen_coords((-250,250), screen.get_size()), 
-            to_screen_coords((250, 250), screen.get_size())
-        )
-        pygame.draw.line(
-            screen, 
-            color, 
-            to_screen_coords((-250,-250), screen.get_size()), 
-            to_screen_coords((250, -250), screen.get_size())
-        )
-        rect_one_pos = to_screen_coords((0,250), screen.get_size())
-        rect_one = pygame.Rect(rect_one_pos[0], rect_one_pos[1], 500, 500)
-        pygame.draw.arc(
-            screen, 
-            color, 
-            rect_one, 
-            3 * math.pi / 2,
-            math.pi / 2
-        )
-        rect_two_pos = to_screen_coords((-500,250), screen.get_size())
-        rect_two = pygame.Rect(rect_two_pos[0], rect_two_pos[1], 500, 500)
-        pygame.draw.arc(
-            screen, 
-            color, 
-            rect_two,
-            math.pi / 2, 
-            3 * math.pi / 2
-        )
+        self.line_top = Line((-radius, radius), (radius, radius), color)
+        self.line_bottom = Line((-radius, -radius), (radius, -radius), color)
+        self.arc_left = Arc((0,-2*radius), 1*radius, math.pi / 2, 3*math.pi / 2, color)
+
+         
+        self.arc_right = Arc((radius, 0), 2*radius, 3 *math.pi / 2, math.pi / 2, color)
+
+        self.shapes = [self.line_top, self.line_bottom, self.arc_right]
+    def draw(self, screen):
+        for shape in self.shapes: 
+            shape.draw(screen)
