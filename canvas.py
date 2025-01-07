@@ -8,15 +8,16 @@ class Canvas:
     def __init__(self,size):
         pygame.init()
         self.running = True 
-        pygame.display.set_caption("Billiards bitches")
+        pygame.display.set_caption("Bunimovich Stadium")
         self.screen = pygame.display.set_mode(size) 
         self.clock = pygame.time.Clock()
-        self.balls = [Ball((0,0), 10, np.array([-3,1]))]
+        self.balls = [Ball((0,0), 10, np.array([3,1]))]
         self.table = Table(250, (255,0,0))
 
     def update(self): 
-        self.ball.move()
-        self.table.handle_collisions(self.ball)
+        for i in range(0, len(self.balls)): 
+            self.table.handle_collisions(self.balls[i])
+            self.balls[i].move()
 
     def render(self): 
         self.screen.fill((0,0,0))
