@@ -15,12 +15,10 @@ This project models the **Bunimovich Stadium** using a 2D simulation, where ball
 
 ## Requirements
 
-To run this simulation, you need the following Python libraries:
+To run this simulation, you do not need to download any libraries since they are included in the env:
 
-- `pygame`: For rendering the 2D simulation and handling user inputs.
-- `numpy`: For handling vector calculations and ball physics.
+## Getting started
+git clone https://github.com/yourusername/bunimovich-stadium.git
+cd bunimovich-stadium
 
-You can install the required libraries using `pip`:
 
-```bash
-pip install pygame numpy
