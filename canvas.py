@@ -11,7 +11,11 @@ class Canvas:
         pygame.display.set_caption("Bunimovich Stadium")
         self.screen = pygame.display.set_mode(size) 
         self.clock = pygame.time.Clock()
-        self.balls = [Ball((-220,0), 8, np.array([10,-2]))]
+        self.balls = [
+            Ball((-220,0), 8, np.array([10,-2.01])),
+            Ball((-220,0), 8, np.array([10.01,-2])),
+            Ball((-220,0), 8, np.array([9.99,-1.99]))
+        ]
         self.table = Table(250, (255,0,0))
         self.is_paused = False
         self.steps = 50
