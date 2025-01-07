@@ -19,6 +19,6 @@ To run this simulation, you do not need to download any libraries since they are
 
 ## Getting started
 git clone https://github.com/yourusername/bunimovich-stadium.git
-cd bunimovich-stadium
+
 
 

@@ -14,13 +14,13 @@ class Canvas:
         self.balls = [
             Ball((-220,0), 8, np.array([10,-2.01])),
             Ball((-220,0), 8, np.array([10.01,-2])),
-            Ball((-220,0), 8, np.array([8,-1.99])),
-            Ball((-220,0), 8, np.array([9.92,-1.99])),
-            Ball((-220,0), 8, np.array([9.19,-1.99])),
-            Ball((-220,0), 8, np.array([7.99,-1.99])),
-            Ball((-220,0), 8, np.array([6.99,-1.99])),
-            Ball((-220,0), 8, np.array([9.29,-1.99])),
-            Ball((-220,0), 8, np.array([5.99,-1.99])),
+            Ball((-220,0), 8, np.array([10.02,-2.05])),
+            Ball((-220,0), 8, np.array([10.03,-2.03])),
+            Ball((-220,0), 8, np.array([9.98,-1.99])),
+            Ball((-220,0), 8, np.array([9.99,-1.98])),
+            Ball((-220,0), 8, np.array([9.97,-1.95])),
+            Ball((-220,0), 8, np.array([9.96,-1.96])),
+            Ball((-220,0), 8, np.array([9.95,-1.99])),
         ]
         self.table = Table(250, (255,0,0))
         self.is_paused = False
