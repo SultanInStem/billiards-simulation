@@ -34,8 +34,8 @@ class Arc:
             ### Right arc 
             if ball_pos[0] > self.center_pos[0] and (distance + ball_radius + error_tolerance) >= (self.radius / 2): 
                 return True 
-            else: 
-                return False
+            return False
         else: 
-            ### Left arc 
+            if ball_pos[0] < self.center_pos[0] and (distance + ball_radius + error_tolerance) >= (self.radius / 2): 
+                return True
             return False
