@@ -16,3 +16,9 @@ class Ball:
         x = self.pos[0] + self.vel_v[0]
         y = self.pos[1] + self.vel_v[1] 
         self.pos = (x, y)
+    def get_math_pos(self): 
+        return self.pos 
+    def get_velocity(self):
+        return self.vel_v
+    def get_radius(self): 
+        return self.radius

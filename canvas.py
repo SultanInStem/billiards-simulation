@@ -11,16 +11,19 @@ class Canvas:
         pygame.display.set_caption("Billiards bitches")
         self.screen = pygame.display.set_mode(size) 
         self.clock = pygame.time.Clock()
-        self.ball = Ball((0,0), 10, np.array([-3,1]))
+        self.balls = [Ball((0,0), 10, np.array([-3,1]))]
         self.table = Table(250, (255,0,0))
 
     def update(self): 
         self.ball.move()
+        self.table.handle_collisions(self.ball)
 
     def render(self): 
         self.screen.fill((0,0,0))
 
-        self.ball.draw(self.screen)
+        for ball in self.balls: 
+            ball.draw(self.screen)
+
         self.table.draw(self.screen)
 
         pygame.display.flip()

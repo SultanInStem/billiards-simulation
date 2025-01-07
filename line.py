@@ -10,4 +10,5 @@ class Line:
         start_pos = to_screen_coords(self.start_pos, screen.get_size())
         end_pos = to_screen_coords(self.end_pos, screen.get_size())
         pygame.draw.line(screen, self.color, start_pos, end_pos)
-        
+    def is_collision(self):
+        return False   

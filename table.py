@@ -16,3 +16,8 @@ class Table:
     def draw(self, screen):
         for shape in self.shapes: 
             shape.draw(screen)
+
+    def handle_collisions(self): 
+        for shape in self.shapes: 
+            if shape.is_collision(): 
+                print("Collision Detected")
