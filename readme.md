@@ -22,3 +22,8 @@ git clone https://github.com/yourusername/bunimovich-stadium.git
 
 
 
+## Demo
+![Alt Text](billiards.gif)
+
+
+
