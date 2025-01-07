@@ -26,12 +26,13 @@ class Arc:
         )
 
     def is_collision(self, ball):
+        error_tolerance = 2
         ball_radius = ball.get_radius()
         ball_pos = ball.get_math_pos()
-        distance = (self.center_pos[0] - ball_pos[0])**2 + (self.center_pos[1] - ball_pos[1])**2
+        distance = math.sqrt((self.center_pos[0] - ball_pos[0])**2 + (self.center_pos[1] - ball_pos[1])**2)
         if self.start_angle > self.end_angle: 
             ### Right arc 
-            if ball_pos[0] > self.center_pos[0] and distance >= self.radius: 
+            if ball_pos[0] > self.center_pos[0] and (distance + ball_radius + error_tolerance) >= (self.radius / 2): 
                 return True 
             else: 
                 return False
