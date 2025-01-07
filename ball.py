@@ -6,13 +6,16 @@ class Ball:
         self.current_pos = pos 
         self.radius = radius 
         self.vel_v = velocity_v 
-
+        self.tail = [self.current_pos]
+        self.tail_max_length = 50
 
     def draw(self, screen): 
         screen_pos = to_screen_coords(self.current_pos, screen.get_size())
         pygame.draw.circle(screen, (255,255,255), screen_pos, self.radius, 0)
+        for dot in self.tail:
+            pygame.draw.circle(screen, (55,25,255), to_screen_coords(dot, screen.get_size()), 1, 0)
 
-    def move(self, steps, obstacles, canvas): 
+    def move(self, steps, obstacles, dt): 
         step_dx = (self.vel_v[0] / steps)
         step_dy = (self.vel_v[1] / steps) 
         x = self.current_pos[0]
@@ -33,8 +36,12 @@ class Ball:
                     break
             # If a collision is detected, stop the movement at the previous position
             if collision_detected: break
-        
         self.current_pos = (x, y)
+        if len(self.tail) < self.tail_max_length: 
+            self.tail.append((x,y))
+        else: 
+            self.tail.pop()
+            self.tail.insert(0,(x,y))
     def get_current_pos(self): 
         return self.current_pos 
     def get_velocity(self):

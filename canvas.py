@@ -14,17 +14,23 @@ class Canvas:
         self.balls = [
             Ball((-220,0), 8, np.array([10,-2.01])),
             Ball((-220,0), 8, np.array([10.01,-2])),
-            Ball((-220,0), 8, np.array([9.99,-1.99]))
+            Ball((-220,0), 8, np.array([8,-1.99])),
+            Ball((-220,0), 8, np.array([9.92,-1.99])),
+            Ball((-220,0), 8, np.array([9.19,-1.99])),
+            Ball((-220,0), 8, np.array([7.99,-1.99])),
+            Ball((-220,0), 8, np.array([6.99,-1.99])),
+            Ball((-220,0), 8, np.array([9.29,-1.99])),
+            Ball((-220,0), 8, np.array([5.99,-1.99])),
         ]
         self.table = Table(250, (255,0,0))
         self.is_paused = False
-        self.steps = 50
+        self.steps = 100
+        self.dt = (1/90) 
 
     def update(self): 
         for i in range(0, len(self.balls)): 
             obstacles = self.table.get_obstacles()
-            self.balls[i].move(self.steps, obstacles, self)
-
+            self.balls[i].move(self.steps, obstacles, self.dt)
     def render(self): 
         self.screen.fill((0,0,0))
 
@@ -32,6 +38,10 @@ class Canvas:
             ball.draw(self.screen)
 
         self.table.draw(self.screen)
+        pygame.draw.circle(self.screen, (0,255,0), to_screen_coords((250,250),self.screen.get_size()), 2, 0)
+        pygame.draw.circle(self.screen, (0,255,0), to_screen_coords((-250,250),self.screen.get_size()), 2, 0)
+        pygame.draw.circle(self.screen, (0,255,0), to_screen_coords((250,-250),self.screen.get_size()), 2, 0)
+        pygame.draw.circle(self.screen, (0,255,0), to_screen_coords((-250,-250),self.screen.get_size()), 2, 0)
 
         pygame.display.flip()
         self.clock.tick(90)
