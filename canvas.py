@@ -22,7 +22,6 @@ class Canvas:
 
         self.ball.draw(self.screen)
         self.table.draw(self.screen)
-        pygame.draw.circle(self.screen, (0,255,0), to_screen_coords((0,0), self.screen.get_size()), 5, 0)
 
         pygame.display.flip()
         self.clock.tick(60)

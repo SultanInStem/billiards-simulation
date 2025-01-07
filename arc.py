@@ -22,3 +22,6 @@ class Arc:
             self.start_angle, 
             self.end_angle
         )
+
+    def is_collision(self, ball):
+        pass 
