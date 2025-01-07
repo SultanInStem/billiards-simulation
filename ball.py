@@ -1,6 +1,6 @@
 import pygame 
 from globals import to_screen_coords, to_math_coords
-
+import numpy as np
 class Ball: 
     def __init__(self, pos, radius, velocity_v): 
         self.current_pos = pos 
@@ -18,20 +18,22 @@ class Ball:
         x = self.current_pos[0]
         y = self.current_pos[1]
         for _ in range(steps):  
-            new_x = x + step_dx 
-            new_y = y + step_dy
+            x += step_dx 
+            y += step_dy
             collision_detected = False
             for obstacle in obstacles:
-                if obstacle.is_collision(self):
+                if obstacle.is_collision((x,y), self.radius):
                     collision_detected = True
+                    ### Reflect velocity 
+                    x -= step_dx 
+                    y -= step_dy
+                    normal = obstacle.get_normal((x, y))
+                    new_vel = self.vel_v - 2 * (np.dot(normal, self.vel_v)) * normal
+                    self.vel_v = new_vel
                     break
-
             # If a collision is detected, stop the movement at the previous position
-            if collision_detected:
-                break
-            else:
-                x = new_x
-                y = new_y
+            if collision_detected: break
+        
         self.current_pos = (x, y)
     def get_current_pos(self): 
         return self.current_pos 

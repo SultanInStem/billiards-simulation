@@ -1,6 +1,7 @@
 import pygame 
-from globals import to_screen_coords, to_math_coords
+from globals import to_screen_coords, to_math_coords, normalize_vector
 import math
+import numpy as np 
 
 class Arc: 
     def __init__(self, center_pos, radius, start_angle, end_angle, color):
@@ -38,3 +39,5 @@ class Arc:
             if pos[0] < self.center_pos[0] and (distance + radius + error_tolerance) >= (self.radius / 2): 
                 return True
             return False
+    def get_normal(self, point): 
+        return normalize_vector(np.array([point[0] - self.center_pos[0], point[1] - self.center_pos[1]]))
