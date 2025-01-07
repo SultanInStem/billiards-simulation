@@ -14,12 +14,12 @@ class Ball:
         pygame.draw.circle(screen, (255,255,255), screen_pos, self.radius, 0)
 
     def move(self): 
-        x = self.pos[0] + self.vel_v[0]
-        y = self.pos[1] + self.vel_v[1] 
+        x = self.current_pos[0] + self.vel_v[0]
+        y = self.current_pos[1] + self.vel_v[1] 
         self.previous_pos = self.current_pos 
         self.current_pos = (x, y)
     def get_current_pos(self): 
-        return self.current_pospos 
+        return self.current_pos 
     def get_previous_pos(self): 
         return self.previous_pos
     def get_velocity(self):
