@@ -14,4 +14,7 @@ class Line:
         ball_pos = ball.get_current_pos()
         ball_radius = ball.get_radius()
         error_tolerance = 2
-        return (ball_pos[0] - ball_radius >= self.start_pos[0] and ball_pos[0] + ball_radius <= self.end_pos[0] and abs(ball_pos[1] + ball_radius + error_tolerance) >= abs(self.start_pos[1]))
+        if (ball_pos[0] - ball_radius >= self.start_pos[0] and ball_pos[0] + ball_radius <= self.end_pos[0] and abs(ball_pos[1] + ball_radius + error_tolerance) >= abs(self.start_pos[1])): 
+            return True
+        return False
+        

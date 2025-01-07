@@ -17,9 +17,16 @@ class Table:
         for shape in self.shapes: 
             shape.draw(screen)
 
-    def handle_collisions(self, ball, c): 
-        for shape in self.shapes: 
-            if shape.is_collision(ball): 
-                print("Collision Detected")
-                c.is_paused = True
-                break
+    def get_obstacles(self):
+        return self.shapes
+    def handle_collisions(self, ball, canvas): 
+        pass
+
+
+    
+
+
+
+
+
+

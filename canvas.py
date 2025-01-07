@@ -14,11 +14,12 @@ class Canvas:
         self.balls = [Ball((0,0), 10, np.array([0,10]))]
         self.table = Table(250, (255,0,0))
         self.is_paused = False
+        self.steps = 100
 
     def update(self): 
         for i in range(0, len(self.balls)): 
-            self.table.handle_collisions(self.balls[i], self)
-            self.balls[i].move()
+            obstacles = self.table.get_obstacles()
+            self.balls[i].move(self.steps, obstacles, self)
 
     def render(self): 
         self.screen.fill((0,0,0))
