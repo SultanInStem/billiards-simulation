@@ -36,13 +36,7 @@ class Canvas:
 
         for ball in self.balls: 
             ball.draw(self.screen)
-
         self.table.draw(self.screen)
-        pygame.draw.circle(self.screen, (0,255,0), to_screen_coords((250,250),self.screen.get_size()), 2, 0)
-        pygame.draw.circle(self.screen, (0,255,0), to_screen_coords((-250,250),self.screen.get_size()), 2, 0)
-        pygame.draw.circle(self.screen, (0,255,0), to_screen_coords((250,-250),self.screen.get_size()), 2, 0)
-        pygame.draw.circle(self.screen, (0,255,0), to_screen_coords((-250,-250),self.screen.get_size()), 2, 0)
-
         pygame.display.flip()
         self.clock.tick(90)
     def handle_events(self): 

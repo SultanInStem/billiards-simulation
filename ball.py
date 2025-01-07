@@ -10,10 +10,13 @@ class Ball:
         self.tail_max_length = 50
 
     def draw(self, screen): 
+        screen_size = screen.get_size()
         screen_pos = to_screen_coords(self.current_pos, screen.get_size())
         pygame.draw.circle(screen, (255,255,255), screen_pos, self.radius, 0)
-        for dot in self.tail:
-            pygame.draw.circle(screen, (55,25,255), to_screen_coords(dot, screen.get_size()), 1, 0)
+        for i in range(0,len(self.tail) - 1):
+            start = to_screen_coords(self.tail[i], screen_size)
+            end = to_screen_coords(self.tail[i + 1], screen_size)
+            pygame.draw.line(screen, (0,200,220), start, end)
 
     def move(self, steps, obstacles, dt): 
         step_dx = (self.vel_v[0] / steps)

@@ -1,6 +1,4 @@
-import pygame 
 import math
-from globals import to_math_coords, to_screen_coords
 from arc import Arc 
 from line import Line
 class Table: 
@@ -16,11 +14,8 @@ class Table:
     def draw(self, screen):
         for shape in self.shapes: 
             shape.draw(screen)
-
     def get_obstacles(self):
         return self.shapes
-    def handle_collisions(self, ball, canvas): 
-        pass
 
 
     
