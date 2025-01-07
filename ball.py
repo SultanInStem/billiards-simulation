@@ -18,13 +18,20 @@ class Ball:
         x = self.current_pos[0]
         y = self.current_pos[1]
         for _ in range(steps):  
-            x += step_dx 
-            y += step_dy
-            for obstacle in obstacles: 
-                if obstacle.is_collision(self): 
-                    x -= step_dx
-                    y -= step_dy 
-                    canvas.is_paused = True
+            new_x = x + step_dx 
+            new_y = y + step_dy
+            collision_detected = False
+            for obstacle in obstacles:
+                if obstacle.is_collision(self):
+                    collision_detected = True
+                    break
+
+            # If a collision is detected, stop the movement at the previous position
+            if collision_detected:
+                break
+            else:
+                x = new_x
+                y = new_y
         self.current_pos = (x, y)
     def get_current_pos(self): 
         return self.current_pos 
@@ -32,3 +39,7 @@ class Ball:
         return self.vel_v
     def get_radius(self): 
         return self.radius
+    def set_velocity(self, vel): 
+        self.vel_v = vel
+    def set_pos(self, point): 
+        self.current_pos = point
