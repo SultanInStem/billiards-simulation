@@ -18,7 +18,7 @@ This project models the **Bunimovich Stadium** using a 2D simulation, where ball
 To run this simulation, you do not need to download any libraries since they are included in the env:
 
 ## Getting started
-git clone https://github.com/yourusername/bunimovich-stadium.git
+git clone https://github.com/SultanInStem/billiards-simulation.git
 
 
 
